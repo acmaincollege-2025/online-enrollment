@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template/layout_student.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:define name="content">
+        <h:outputStylesheet>
+<<<<<<< HEAD
+            .dashboard-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.2s ease-in-out;
+            min-height: 140px;
+            }
+
+            .dashboard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            }
+
+            .dashboard-card h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+            }
+
+            .dash-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.25s ease;
+
+            min-height: 170px;
+            }
+
+            .dash-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            }
+
+            .dash-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            display: block;
+            }
+
+            /* Titles */
+            .dash-card h3 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+            }
+
+            .dash-card p {
+            font-size: 13px;
+            color: #777;
+            margin: 0;
+            }
+
+            /* Optional color accents */
+            .enroll-card .dash-icon { color: #4CAF50; }
+            .assessment-card .dash-icon { color: #2196F3; }
+            .payment-card .dash-icon { color: #FF9800; }
+            .profile-card .dash-icon { color: #9C27B0; }
+        </h:outputStylesheet>
+
+        <h:form id="dashboardForm">
+            <div class="ui-g">
+
+                <div class="ui-g-12">
+                    <h2>Welcome Back!</h2>
+                </div>
+
+                <!-- Enroll -->
+                <div class="ui-g-3">
+                    <p:commandLink action="/Student/enrollment-student"
+                                   styleClass="card-link">
+
+                        <div class="dash-card">
+                            <i class="pi pi-user-plus dash-icon"></i>
+                            <h3>🎓 </h3>
+                            <h3>Assessment and Enrollment</h3>
+                            <p>Start or continue enrollment</p>
+                        </div>
+
+                    </p:commandLink>
+                </div>
+
+
+
+
+                <!-- Change Password -->
+                <div class="ui-g-3">
+                    <p:commandLink onclick="PF('changePasswordDlg').show();"
+                                   styleClass="card-link">
+
+                        <div class="dash-card">
+                            <i class="pi pi-user-plus dash-icon"></i>
+                            <h3>🔑 </h3>
+                            <h3>Password Management</h3>
+                            <p>Change or Update Password</p>
+                        </div>
+=======
+
+            /* ==========================================
+            STUDENT DASHBOARD
+            ========================================== */
+
+            .student-dashboard {
+            padding: 30px;
+            background: #f4f7fb;
+            min-height: 75vh;
+            font-family: "Segoe UI", Arial, sans-serif;
+            }
+
+            /* Welcome Header */
+            .dashboard-header {
+            margin-bottom: 30px;
+            }
+
+            .dashboard-header h2 {
+            color: #193650;
+            font-size: 27px;
+            font-weight: 600;
+            margin: 0 0 8px;
+            }
+
+            .dashboard-header p {
+            color: #718096;
+            font-size: 14px;
+            margin: 0;
+            }
+
+            /* Card Grid */
+            .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            }
+
+            /* Dashboard Cards */
+            .dash-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 190px;
+            padding: 28px 20px;
+
+            background: #ffffff;
+            border: 1px solid #e3eaf1;
+            border-radius: 12px;
+
+            text-align: center;
+            text-decoration: none !important;
+            cursor: pointer;
+
+            box-shadow: 0 3px 12px rgba(25, 54, 80, 0.06);
+
+            transition: transform 0.2s ease,
+            box-shadow 0.2s ease,
+            border-color 0.2s ease;
+            }
+
+            .dash-card:hover {
+            transform: translateY(-4px);
+            border-color: #b7cce0;
+            box-shadow: 0 8px 22px rgba(25, 54, 80, 0.12);
+            }
+
+            /* Icon Container */
+            .dash-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 58px;
+            height: 58px;
+
+            margin-bottom: 17px;
+            border-radius: 12px;
+
+            background: #edf3f9;
+            color: #28577e;
+            font-size: 27px;
+            }
+
+            /* Card Titles */
+            .dash-card h3 {
+            color: #193650;
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0 0 9px;
+            }
+
+            /* Card Description */
+            .dash-card p {
+            color: #718096;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+            }
+
+            /* Card Icon Colors */
+            .assessment-card .dash-icon {
+            background: #e8f1fb;
+            color: #286090;
+            }
+
+            .password-card .dash-icon {
+            background: #f0edfb;
+            color: #7255a3;
+            }
+
+            .profile-card .dash-icon {
+            background: #e9f5f1;
+            color: #32836b;
+            }
+
+            /* ==========================================
+            PROFILE DIALOG
+            ========================================== */
+
+            .profile-form {
+            padding: 15px 10px;
+            }
+
+            .profile-form td {
+            padding: 9px 12px;
+            color: #425466;
+            font-size: 14px;
+            }
+
+            .profile-input {
+            width: 100% !important;
+            box-sizing: border-box;
+            }
+
+            .profile-textarea {
+            width: 100% !important;
+            box-sizing: border-box;
+            }
+
+            .dialog-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 12px 15px;
+            }
+
+            /* ==========================================
+            RESPONSIVE
+            ========================================== */
+
+            @media screen and (max-width: 900px) {
+            .dashboard-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            }
+
+            @media screen and (max-width: 600px) {
+            .student-dashboard {
+            padding: 20px 14px;
+            }
+
+            .dashboard-grid {
+            grid-template-columns: 1fr;
+            }
+
+            .dash-card {
+            min-height: 160px;
+            }
+
+            .dashboard-header h2 {
+            font-size: 23px;
+            }
+            }
+
+        </h:outputStylesheet>
+
+
+        <h:form id="dashboardForm">
+
+            <div class="student-dashboard">
+
+                <!-- Welcome Header -->
+                <div class="dashboard-header">
+                    <h2>Welcome Back!</h2>
+                    <p>
+                        Manage your enrollment, account, and personal information.
+                    </p>
+                </div>
+
+                <!-- Dashboard Cards -->
+                <div class="dashboard-grid">
+
+                    <!-- Assessment and Enrollment -->
+                    <p:commandLink action="/Student/enrollment-student"
+                                   styleClass="dash-card assessment-card">
+
+                        <span class="dash-icon">
+                            <i class="pi pi-graduation-cap"></i>
+                        </span>
+
+                        <h1>🎓</h1>
+                        <h3>Assessment and Enrollment</h3>
+
+                        <p>Start or continue your enrollment.</p>
+
+                    </p:commandLink>
+
+
+                    <!-- Password Management -->
+                    <p:commandLink process="@this"
+                                   onclick="PF('changePasswordDlg').show(); return false;"
+                                   styleClass="dash-card password-card">
+
+                        <span class="dash-icon">
+                            <i class="pi pi-lock"></i>
+                        </span>
+
+                        <h1>🔑</h1>
+                        <h3>Password Management</h3>
+
+                        <p>Change or update your password.</p>
+
+                    </p:commandLink>
+
+
+                    <!-- Profile Management -->
+                    <p:commandLink process="@this"
+                                   actionListener="#{studentBean.loadProfile}"
+                                   update="editProfileDialog"
+                                   oncomplete="PF('editProfileDlg').show();"
+                                   styleClass="dash-card profile-card">
+
+                        <span class="dash-icon">
+                            <i class="pi pi-user"></i>
+                        </span>
+
+                        <h1>👤</h1>
+                        <h3>Profile Management</h3>
+
+                        <p>Update your personal information.</p>
+>>>>>>> 236df9c (Updated Student Dashboard)
+
+                    </p:commandLink>
+
+                </div>
+
+<<<<<<< HEAD
+
+
+                <!-- Edit Profile -->
+                <div class="ui-g-3">
+                    <p:commandLink actionListener="#{studentBean.loadProfile}"
+                                   onclick="PF('editProfileDlg').show();"
+                                   styleClass="card-link">
+
+                        <div class="dash-card">
+                            <i class="pi pi-user-plus dash-icon"></i>
+                            <h3>👤 </h3>
+                            <h3>Profile Management</h3>
+                            <p>Update Student Information</p>
+                        </div>
+
+                    </p:commandLink>
+                </div>
+
+
+
+            </div>
+
+            <!-- Edit Profile -->
+=======
+            </div>
+
+
+            <!-- ===================================
+                 EDIT STUDENT PROFILE DIALOG
+            ==================================== -->
+
+>>>>>>> 236df9c (Updated Student Dashboard)
+            <p:dialog id="editProfileDialog"
+                      header="Edit Student Profile"
+                      widgetVar="editProfileDlg"
+                      modal="true"
+                      resizable="false"
+<<<<<<< HEAD
+                      width="700">
+
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <h:outputText value="First Name" />
+                    <p:inputText value="#{studentBean.selectedStudent.firstname}" />
+
+                    <h:outputText value="Middle Name" />
+                    <p:inputText value="#{studentBean.selectedStudent.middlename}" />
+
+                    <h:outputText value="Last Name" />
+                    <p:inputText value="#{studentBean.selectedStudent.lastname}" />
+
+                    <h:outputText value="Email" />
+                    <p:inputText value="#{studentBean.selectedStudent.email}" />
+
+                    <h:outputText value="Mobile No." />
+                    <p:inputText value="#{studentBean.selectedStudent.contactno}" />
+
+                    <h:outputText value="Address" />
+                    <p:inputTextarea value="#{studentBean.selectedStudent.address}"
+                                     rows="3"
+                                     cols="30"/>
+
+                    <h:outputText value="Birth Date" />
+                    <p:calendar value="#{studentBean.selectedStudent.dob}"
+                                pattern="MM/dd/yyyy" />
+=======
+                      closable="true"
+                      width="650">
+
+                <p:messages id="profileMessages"
+                            showDetail="true"
+                            closable="true"/>
+
+                <h:panelGrid columns="2"
+                             cellpadding="8"
+                             styleClass="profile-form"
+                             columnClasses="profile-label,profile-field">
+
+                    <p:outputLabel for="firstName" value="First Name"/>
+                    <p:inputText id="firstName"
+                                 value="#{studentBean.selectedStudent.firstname}"
+                                 styleClass="profile-input"
+                                 required="true"/>
+
+                    <p:outputLabel for="middleName" value="Middle Name"/>
+                    <p:inputText id="middleName"
+                                 value="#{studentBean.selectedStudent.middlename}"
+                                 styleClass="profile-input"/>
+
+                    <p:outputLabel for="lastName" value="Last Name"/>
+                    <p:inputText id="lastName"
+                                 value="#{studentBean.selectedStudent.lastname}"
+                                 styleClass="profile-input"
+                                 required="true"/>
+
+                    <p:outputLabel for="email" value="Email Address"/>
+                    <p:inputText id="email"
+                                 value="#{studentBean.selectedStudent.email}"
+                                 styleClass="profile-input"
+                                 required="true"/>
+
+                    <p:outputLabel for="contact" value="Mobile Number"/>
+                    <p:inputText id="contact"
+                                 value="#{studentBean.selectedStudent.contactno}"
+                                 styleClass="profile-input"/>
+
+                    <p:outputLabel for="address" value="Address"/>
+                    <p:inputTextarea id="address"
+                                     value="#{studentBean.selectedStudent.address}"
+                                     rows="3"
+                                     styleClass="profile-textarea"/>
+>>>>>>> 236df9c (Updated Student Dashboard)
+
+                </h:panelGrid>
+
+                <f:facet name="footer">
+
+<<<<<<< HEAD
+                    <p:commandButton value="Save"
+                                     actionListener="#{studentBean.updateProfile}"
+                                     update="@this"
+                                     oncomplete="PF('editProfileDlg').hide();"/>
+
+                    <p:commandButton value="Cancel"
+                                     type="button"
+                                     onclick="PF('editProfileDlg').hide();" />
+=======
+                    <div class="dialog-actions">
+
+                        <p:commandButton value="Save Changes"
+                                         icon="pi pi-check"
+                                         actionListener="#{studentBean.updateProfile}"
+                                         process="editProfileDialog"
+                                         update="editProfileDialog"
+                                         oncomplete="if (!args.validationFailed) PF('editProfileDlg').hide();"
+                                         styleClass="ui-button-primary"/>
+
+                        <p:commandButton value="Cancel"
+                                         icon="pi pi-times"
+                                         type="button"
+                                         onclick="PF('editProfileDlg').hide();"
+                                         styleClass="ui-button-secondary"/>
+
+                    </div>
+>>>>>>> 236df9c (Updated Student Dashboard)
+
+                </f:facet>
+
+            </p:dialog>
+
+<<<<<<< HEAD
+            <!--Change Password -->
+
+
+=======
+
+            <!-- ===================================
+                 CHANGE PASSWORD DIALOG
+            ==================================== -->
+>>>>>>> 236df9c (Updated Student Dashboard)
+
+            <p:dialog id="changePasswordDialog"
+                      header="Change Password"
+                      widgetVar="changePasswordDlg"
+                      modal="true"
+                      resizable="false"
+<<<<<<< HEAD
+                      width="450">
+
+                <p:messages id="passwordMessages" showDetail="true"/>
+
+                <p:panelGrid columns="2" layout="grid">
+
+                    <h:outputText value="Current Password" />
+                    <p:password value="#{studentBean.currentPassword}"
+                                feedback="false"/>
+
+                    <h:outputText value="New Password" />
+                    <p:password value="#{studentBean.newPassword}"
+                                feedback="true"/>
+
+                    <h:outputText value="Confirm Password" />
+                    <p:password value="#{studentBean.confirmPassword}"
+                                feedback="false"/>
+
+                </p:panelGrid>
+
+                <f:facet name="footer">
+
+                    <p:commandButton value="Change Password"
+                                     action="#{studentBean.changePassword}"
+                                     update="passwordMessages"
+                                     process="@form"/>
+
+                    <p:commandButton value="Cancel"
+                                     type="button"
+                                     onclick="PF('changePasswordDlg').hide();" />
+=======
+                      closable="true"
+                      width="450">
+
+                <p:messages id="passwordMessages"
+                            showDetail="true"
+                            closable="true"/>
+
+                <h:panelGrid columns="2"
+                             cellpadding="8"
+                             style="width:100%;">
+
+                    <p:outputLabel for="currentPassword"
+                                   value="Current Password"/>
+
+                    <p:password id="currentPassword"
+                                value="#{studentBean.currentPassword}"
+                                feedback="false"
+                                style="width:100%;"/>
+
+
+                    <p:outputLabel for="newPassword"
+                                   value="New Password"/>
+
+                    <p:password id="newPassword"
+                                value="#{studentBean.newPassword}"
+                                feedback="true"
+                                style="width:100%;"/>
+
+
+                    <p:outputLabel for="confirmPassword"
+                                   value="Confirm Password"/>
+
+                    <p:password id="confirmPassword"
+                                value="#{studentBean.confirmPassword}"
+                                feedback="false"
+                                style="width:100%;"/>
+
+                </h:panelGrid>
+
+                <f:facet name="footer">
+
+                    <div class="dialog-actions">
+
+                        <p:commandButton value="Change Password"
+                                         icon="pi pi-check"
+                                         action="#{studentBean.changePassword}"
+                                         process="changePasswordDialog"
+                                         update="passwordMessages"
+                                         styleClass="ui-button-primary"/>
+
+                        <p:commandButton value="Cancel"
+                                         icon="pi pi-times"
+                                         type="button"
+                                         onclick="PF('changePasswordDlg').hide();"
+                                         styleClass="ui-button-secondary"/>
+
+                    </div>
+>>>>>>> 236df9c (Updated Student Dashboard)
+
+                </f:facet>
+
+            </p:dialog>
+
+        </h:form>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 236df9c (Updated Student Dashboard)
+    </ui:define>
+
+</ui:composition>
